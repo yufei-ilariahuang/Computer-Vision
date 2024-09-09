@@ -1,1 +1,3 @@
-CS5330 class and assignment codes Part 1 Module 1 ~ 7
+Name: Yufei Huang
+NEU email: huang.yufe@northeastern.edu
+NU ID: 002606376
