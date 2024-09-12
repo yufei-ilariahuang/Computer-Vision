@@ -21,7 +21,7 @@ cv2.imshow("image", img)
 # • Takes time in milliseconds as a parameter and waits for the given time to
 # destroy the window, if 0 is passed in the argument it waits till any key is
 # pressed.
-cv2.waitkey(2000)
+cv2.waitKey(2000)
 
 # allows users to destroy or close all windows at any time after exiting the
 # script
