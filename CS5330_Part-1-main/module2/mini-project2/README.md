@@ -36,11 +36,6 @@ This is the Mini Project 2 repository. It contains various scripts and resources
    - It also supports recording the processed video output to an `output.mp4` file. The cartoon effect, when triggered, applies a series of transformations to give the video a "cartoonish" look.
    
 ![Output Video](output.gif)
-![blured](https://github.com/user-attachments/assets/2d43f230-0783-44dc-9930-becdd209863f)
-![Croped ](https://github.com/user-attachments/assets/7966f0c2-14cf-45aa-8741-e2ed0aef1bd0)
-![Cartoon Function(New)](https://github.com/user-attachments/assets/eef1c891-8ce7-466b-b4ed-059e73b51176)
-![Add a box](https://github.com/user-attachments/assets/861ed9e3-7c21-4209-aff9-ed19e97aa090)
-![Add a Text](https://github.com/user-attachments/assets/7ffcdb45-e797-4056-80c8-47dddb39d1da)
 
 ## How to Use
 1. Run `CamTest.py` to start capturing video from your webcam.
