@@ -13,12 +13,17 @@ box_enabled = False
 text_enabled = False
 threshold_enabled = False
 cartoon_effect_enabled = False
+recording_enabled = False  # Flag to control video recording
 
 # Define the crop region (start and end points)
 crop_region = (100, 100, 400, 400)  # (startX, startY, endX, endY)
 
 # Default resize dimensions
 resize_dimensions = (900, 900)
+
+# Video writer initialization
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')  # Video codec
+out = None  # Placeholder for the video writer object
 
 # Function to reset all settings
 def reset_settings():
@@ -110,6 +115,9 @@ while True:
 
     if cartoon_effect_enabled:
         frame = cartoon_effect(frame)
+        
+    if recording_enabled and out is not None:
+        out.write(frame)
 
     # Display the frame
     cv2.imshow("Frame", frame)
@@ -149,6 +157,19 @@ while True:
         cartoon_effect_enabled = not cartoon_effect_enabled  # Toggle custom function
         if cartoon_effect_enabled:
             reset_settings()
+            
+    # Toggle video recording on 'v' or 'V' key press
+    if key == ord("v") or key == ord("V"):
+        recording_enabled = not recording_enabled
+        if recording_enabled:
+            # Initialize the video writer
+            out = cv2.VideoWriter('output.mp4', fourcc, 20.0, (frame.shape[1], frame.shape[0]))
+            print("Recording started...")
+        else:
+            # Release the video writer
+            out.release()
+            out = None
+            print("Recording stopped.")
 
 
     # Quit the loop on 'q' key press
@@ -157,4 +178,8 @@ while True:
 
 # Clean up
 vs.release()
+
+if out is not None:
+    out.release()
+    
 cv2.destroyAllWindows()
