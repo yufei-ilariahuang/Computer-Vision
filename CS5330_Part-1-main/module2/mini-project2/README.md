@@ -31,7 +31,11 @@ This is the Mini Project 2 repository. It contains various scripts and resources
 ![Flower Contour](flower_contours.png)
 
 2. `CamTest.py`
-- [Watch the output video](output.mp4)
+ - This script captures video frames from a webcam and applies various effects in real-time, including cropping, resizing, blurring, drawing shapes, adding text, edge detection, and a custom cartoon effect. Users can toggle each effect on or off using specific key presses.
+   
+   - It also supports recording the processed video output to an `output.mp4` file. The cartoon effect, when triggered, applies a series of transformations to give the video a "cartoonish" look.
+   
+![Output Video](output.gif)
 
 ## How to Use
 1. Run `CamTest.py` to start capturing video from your webcam.
