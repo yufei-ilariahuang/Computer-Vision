@@ -1,6 +1,7 @@
 import cv2
 
-img = cv2.imread("../images/cans.jpg")
+
+img = cv2.imread("images/cans.jpeg")
 
 #resize
 '''
@@ -35,9 +36,13 @@ it's scaled to 0-179.
 • Saturation (S): The intensity or purity of the color (0-255).
 • Value (V): The brightness or lightness of the color (0-255)
 """
-gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+if img is None:
+    print("Error: Image not found")
+else:
+    gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-hsv_image = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+    hsv_image = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-cv2.imshow("gary", gray_image)
-cv2.imshow("hsv", hsv_image)
+    cv2.imshow("gary", gray_image)
+    cv2.imshow("hsv", hsv_image)
+    print(img.shape)
