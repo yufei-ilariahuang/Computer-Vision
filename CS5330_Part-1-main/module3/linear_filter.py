@@ -6,15 +6,18 @@ def point_operation(img, K, L):
     """
     Applies point operation to given grayscale image
     """
-    img = np.asarray(img, dtype=np.float)
+    img = np.asarray(img, dtype=np.float64)
     img = img*K  + L
     img[img > 255] = 255
     img[img < 0] = 0
-    return np.asarray(img, dtype = np.int)
+    return np.asarray(img, dtype = np.uint8)
 
 def main():
     # read an image 
     img = cv2.imread('../images/flower.png')
+    if img is None:
+        print(f"Error: Image not found at {img_path}")
+        return
     gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     
     # k = 0.5, l = 0
