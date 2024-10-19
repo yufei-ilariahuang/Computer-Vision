@@ -7,7 +7,7 @@ This lab focuses on applying feature detection and matching techniques to dog im
 ## Feature Detection
 
 ### Harris Corner Detection
-We implement Harris Corner Detection with customizable parameters:
+Implement Harris Corner Detection with customizable parameters:
 - `block_size`: Size of the neighborhood for corner detection
 - `ksize`: Aperture parameter for the Sobel operator
 - `k`: Harris detector free parameter
@@ -15,6 +15,8 @@ We implement Harris Corner Detection with customizable parameters:
 - `max_corners`: Limits the number of detected corners
 
 ### SIFT (Scale-Invariant Feature Transform)
+
+
 SIFT is used for detecting and describing local features in the dog images:
 - `nfeatures`: Number of best features to retain
 - `nOctaveLayers`: Number of layers in each octave
@@ -44,8 +46,12 @@ Key components of our implementation:
 
 ## Visualization
 - Harris corners visualized with red circles
+![Harris Corner Detection](https://github.com/user-attachments/assets/1316e7ad-e05f-4e6c-b8d5-2fdae7061d11)
 - SIFT keypoints drawn on separate images
+![Image2 keypoints](https://github.com/user-attachments/assets/0f8b0e1f-8900-4263-a548-0a460819d9c9)
+![Image1 keypoints](https://github.com/user-attachments/assets/d05d9198-b105-4141-83ef-22cc1d941dc8)
 - Matches displayed with green lines connecting corresponding features
+![Matches](https://github.com/user-attachments/assets/6e759f5a-3287-4137-84ca-6f13a86dea7c)
 
 ## Parameters and Tuning
 - Adjustable parameters for Harris corner detection
