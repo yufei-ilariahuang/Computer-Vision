@@ -1,16 +1,5 @@
-Certainly! Here's a rewritten README based on the content you provided and the code we've been working on:
 
 # Lab 3: Advanced Image Processing with OpenCV
-
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Features](#features)
-3. [Code Structure](#code-structure)
-4. [Usage](#usage)
-5. [Key Operations](#key-operations)
-6. [Observations and Explanations](#observations-and-explanations)
-7. [Additional Explorations](#additional-explorations)
-8. [Conclusion](#conclusion)
 
 ## Introduction
 This lab focuses on advanced image processing techniques using OpenCV. We explore basic image operations, color space conversions, and drawing shapes and text on images. The lab implements an interactive program that allows users to perform various image processing operations in real-time.

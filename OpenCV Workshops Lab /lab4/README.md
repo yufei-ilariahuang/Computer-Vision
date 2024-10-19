@@ -1,19 +1,6 @@
 
 # Lab 4: Feature Detection and Matching for Dog Images
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Feature Detection](#feature-detection)
-   - [Harris Corner Detection](#harris-corner-detection)
-   - [SIFT (Scale-Invariant Feature Transform)](#sift-scale-invariant-feature-transform)
-3. [Feature Matching](#feature-matching)
-   - [FLANN (Fast Library for Approximate Nearest Neighbors)](#flann-fast-library-for-approximate-nearest-neighbors)
-4. [Image Preprocessing](#image-preprocessing)
-5. [Code Implementation](#code-implementation)
-6. [Visualization](#visualization)
-7. [Parameters and Tuning](#parameters-and-tuning)
-
-
 ## Introduction
 This lab focuses on applying feature detection and matching techniques to dog images using OpenCV. We explore Harris Corner Detection, SIFT, and FLANN matching algorithms to identify and match distinctive features in Doberman images.
 

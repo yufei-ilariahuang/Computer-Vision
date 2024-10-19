@@ -1,18 +1,5 @@
 # Lab 6: Smoothing and Blurring Techniques
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Importance of Smoothing and Blurring](#importance-of-smoothing-and-blurring)
-3. [Smoothing Techniques](#smoothing-techniques)
-   - [Averaging (Box Filter)](#averaging-box-filter)
-   - [Gaussian Blurring](#gaussian-blurring)
-   - [Median Blurring](#median-blurring)
-   - [Bilateral Filtering](#bilateral-filtering)
-4. [Implementation](#implementation)
-5. [Observations and Explanations](#observations-and-explanations)
-6. [Additional Explorations](#additional-explorations)
-7. [Conclusion](#conclusion)
-
 ## Introduction
 This lab focuses on various smoothing and blurring techniques used in image processing. These methods are essential for reducing noise and preparing images for further analysis in computer vision tasks.
 

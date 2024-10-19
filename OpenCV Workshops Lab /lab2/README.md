@@ -1,16 +1,5 @@
-Certainly! I'll adjust the README to reflect the content and structure of your lab2.py file. Here's the updated README:
 
-```markdown
 # Lab 2: Image Processing Basics
-
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Code Structure](#code-structure)
-3. [Key Functions](#key-functions)
-4. [Main Workflow](#main-workflow)
-5. [Observations and Explanations](#observations-and-explanations)
-6. [Additional Explorations](#additional-explorations)
-7. [Conclusion](#conclusion)
 
 ## Introduction
 This lab focuses on fundamental image processing techniques using OpenCV. We explore image loading, display, color space conversion, and basic image manipulation operations.
@@ -85,6 +74,3 @@ These methods are applied to the same image and displayed side by side for compa
 This lab provides hands-on experience with fundamental image processing techniques using OpenCV. It covers image loading, display, basic manipulations, and color space conversions. The side-by-side comparison of different methods allows for visual understanding of these operations.
 
 Future work could involve more advanced techniques such as image filtering, edge detection, or feature extraction.
-```
-
-This README now accurately reflects the structure and content of your lab2.py file, including the use of separate files for loading, displaying, and saving images. It also mentions the main workflow in the `lab2()` function and the additional explorations in the `compare_methods()` function. Feel free to make any further adjustments to better match your specific lab requirements or to add any additional information you think would be helpful for students.

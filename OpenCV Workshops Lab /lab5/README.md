@@ -1,15 +1,5 @@
 # Lab 5: Image Histograms
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Types of Histograms](#types-of-histograms)
-   - [Grayscale Histogram](#grayscale-histogram)
-   - [Color Histogram](#color-histogram)
-3. [Implementation](#implementation)
-4. [Observations and Explanations](#observations-and-explanations)
-5. [Additional Explorations](#additional-explorations)
-6. [Conclusion](#conclusion)
-
 ## Introduction
 This lab focuses on image histograms, which are graphical representations showing the distribution of pixel intensity values in an image. Histograms are crucial tools in image processing, aiding in tasks such as image analysis, enhancement, and object detection.
 
