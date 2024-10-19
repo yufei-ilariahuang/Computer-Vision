@@ -39,27 +39,37 @@ Run the `lab3()` function to start the interactive image processing program. Use
 ## Key Operations
 
 ### Resizing Images
+![resized](https://github.com/user-attachments/assets/ec31e764-5c32-4756-9c25-fd28eefb0c5b)
+
 ```python
 resized = resize_image(original, 300, 200)
 ```
 
 ### Cropping Images
+![cropped](https://github.com/user-attachments/assets/b471de9d-76ed-44c2-b6e9-8bb0a9a5cb1d)
+
 ```python
 cropped = crop_image(original, 100, 100, 200, 200)
 ```
 
 ### Rotating Images
+![rotated](https://github.com/user-attachments/assets/4399152f-2f74-4ab1-a3a4-e5f78a872fff)
+
 ```python
 rotated = rotate_image(original, angle)
 ```
 
 ### Color Space Conversions
+![grayscale](https://github.com/user-attachments/assets/0a93a69a-237e-4942-925f-8f906d3216ee)
+
 ```python
 gray = to_grayscale(original)
 hsv = to_hsv(original)
 ```
 
 ### Drawing Shapes and Text
+![drawing](https://github.com/user-attachments/assets/6ed9191f-f11b-404f-adbd-b0d7f2927693)
+
 ```python
 draw_line(image, (0, 0), (100, 100), (255, 0, 0), 2)
 draw_rectangle(image, (50, 50), (150, 150), (0, 255, 0), 2)
