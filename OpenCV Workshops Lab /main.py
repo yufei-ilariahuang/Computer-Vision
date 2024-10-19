@@ -6,22 +6,22 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import lab functions
 from lab2.lab2 import lab2
-# from lab1.lab1 import lab1  # Uncomment when lab1 is ready
 from lab3.lab3 import lab3  
-
+from lab4.lab4 import lab4
+#from lab3.lab3 import lab3
 def main():
     while True:
         print("\nComputer Vision Labs")
-        print("1. Lab 1")
+        print("1. Exit")
         print("2. Lab 2")
         print("3. Lab 3")
-        print("4. Exit")
+        print("4. Lab 4")
         
         choice = input("Enter your choice (1-4): ")
         
         if choice == '1':
-            print("Running Lab 1...")
-            # lab1()  # Uncomment when lab1 is ready
+            print("Exiting...")
+            break
         elif choice == '2':
             print("Running Lab 2...")
             lab2()
@@ -29,8 +29,8 @@ def main():
             print("Running Lab 3...")
             lab3()  
         elif choice == '4':
-            print("Exiting...")
-            break
+            print("Running Lab 4...")
+            lab4()  
         else:
             print("Invalid choice. Please try again.")
 

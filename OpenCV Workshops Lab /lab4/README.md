@@ -1,4 +1,5 @@
-# Lab 4: Feature Detection and Matching
+
+# Lab 4: Feature Detection and Matching for Dog Images
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -7,79 +8,61 @@
    - [SIFT (Scale-Invariant Feature Transform)](#sift-scale-invariant-feature-transform)
 3. [Feature Matching](#feature-matching)
    - [FLANN (Fast Library for Approximate Nearest Neighbors)](#flann-fast-library-for-approximate-nearest-neighbors)
-4. [Code Implementation](#code-implementation)
-5. [Observations and Explanations](#observations-and-explanations)
-6. [Additional Explorations](#additional-explorations)
-7. [Conclusion](#conclusion)
+4. [Image Preprocessing](#image-preprocessing)
+5. [Code Implementation](#code-implementation)
+6. [Visualization](#visualization)
+7. [Parameters and Tuning](#parameters-and-tuning)
+
 
 ## Introduction
-This lab focuses on feature detection and matching techniques using OpenCV. We explore Harris Corner Detection, SIFT, and FLANN matching algorithms to identify and match distinctive features in images.
+This lab focuses on applying feature detection and matching techniques to dog images using OpenCV. We explore Harris Corner Detection, SIFT, and FLANN matching algorithms to identify and match distinctive features in Doberman images.
 
 ## Feature Detection
 
 ### Harris Corner Detection
-Harris Corner Detector is a corner detection operator that considers the differential of the corner score with respect to direction directly.
-
-Key function:
-```python
-cv2.cornerHarris(src, blockSize, ksize, k[, dst[, borderType]])
-```
+We implement Harris Corner Detection with customizable parameters:
+- `block_size`: Size of the neighborhood for corner detection
+- `ksize`: Aperture parameter for the Sobel operator
+- `k`: Harris detector free parameter
+- `threshold_ratio`: Determines the strength threshold for corner consideration
+- `max_corners`: Limits the number of detected corners
 
 ### SIFT (Scale-Invariant Feature Transform)
-SIFT is an algorithm to detect, describe, and match local features in images. It's invariant to scale, rotation, and partially invariant to illumination changes.
-
-Key functions:
-```python
-sift = cv2.SIFT_create()
-keypoints, descriptors = sift.detectAndCompute(gray, None)
-```
+SIFT is used for detecting and describing local features in the dog images:
+- `nfeatures`: Number of best features to retain
+- `nOctaveLayers`: Number of layers in each octave
+- `contrastThreshold`: Filter out weak features
+- `edgeThreshold`: Filter out edge-like features
+- `sigma`: The sigma of the Gaussian applied to the input image
 
 ## Feature Matching
 
 ### FLANN (Fast Library for Approximate Nearest Neighbors)
-FLANN is used for fast approximate nearest neighbor searches in high dimensional spaces. It's particularly useful for matching feature descriptors between images.
+FLANN is implemented for efficient matching of SIFT descriptors:
+- Uses KD-tree algorithm for indexing
+- Configurable number of trees and checks for balancing speed and accuracy
 
-Key functions:
-```python
-flann = cv2.FlannBasedMatcher(index_params, search_params)
-matches = flann.knnMatch(descriptors1, descriptors2, k=2)
-```
+## Image Preprocessing
+- Image resizing while maintaining aspect ratio
+- Gaussian blur application for noise reduction
+- Edge enhancement using Laplacian
 
 ## Code Implementation
+Key components of our implementation:
+- `harris_corner_detection`: Detects and visualizes corners
+- `sift_detection`: Extracts SIFT features and descriptors
+- `flann_matching`: Performs feature matching
+- `filter_matches`: Filters matches based on a ratio test
+- `resize_image`: Resizes images for consistent processing
 
-Our lab implementation includes the following key components:
+## Visualization
+- Harris corners visualized with red circles
+- SIFT keypoints drawn on separate images
+- Matches displayed with green lines connecting corresponding features
 
-1. Harris Corner Detection
-2. SIFT Keypoint Detection and Description
-3. FLANN-based Feature Matching
-4. Visualization of detected features and matches
+## Parameters and Tuning
+- Adjustable parameters for Harris corner detection
+- Configurable SIFT parameters for feature detection
+- Tunable FLANN matching parameters
+- Adjustable ratio for match filtering
 
-Refer to `feature_detection.py` and `lab4.py` for the complete implementation.
-
-## Observations and Explanations
-
-1. **Harris Corner Detection**: 
-   - Effective for detecting corners in images.
-   - Sensitive to scale changes.
-
-2. **SIFT**:
-   - Robust to scale and rotation changes.
-   - Computationally more expensive than Harris.
-
-3. **FLANN Matching**:
-   - Efficient for large datasets of features.
-   - Requires tuning of index and search parameters for optimal performance.
-
-## Additional Explorations
-
-1. **Feature Invariance**: Experiment with different transformations (rotation, scaling) to test the invariance of SIFT features.
-
-2. **Matching Strategies**: Implement and compare different matching strategies (e.g., brute-force matching vs. FLANN).
-
-3. **Application in Object Recognition**: Use the detected features and matches for simple object recognition tasks.
-
-## Conclusion
-
-This lab provided hands-on experience with advanced feature detection and matching techniques. These methods form the foundation for various computer vision applications, including object recognition, image stitching, and 3D reconstruction.
-
-Future work could involve exploring more recent feature detection algorithms like ORB or AKAZE, and applying these techniques to real-world problems such as augmented reality or visual SLAM (Simultaneous Localization and Mapping).
