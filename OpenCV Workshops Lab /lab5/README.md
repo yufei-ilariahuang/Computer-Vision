@@ -37,7 +37,7 @@ A color histogram represents the distribution of colors in an image. In OpenCV, 
 
 ## Implementation
 
-Our lab implementation includes the following key components:
+includes the following key components:
 
 1. Grayscale Histogram Generation and Visualization
 2. Color Histogram Generation and Visualization
