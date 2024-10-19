@@ -1,5 +1,5 @@
 import cv2
-from smoothing_operation import (
+from .smoothing_operation import (
     apply_averaging,
     apply_gaussian_blur,
     apply_median_blur,
@@ -10,7 +10,7 @@ from smoothing_operation import (
 
 def lab6():
     # Load an image
-    image_path = '../image/noisy_image.jpg'  # Replace with your image path
+    image_path = 'image/w4.jpg'  # Replace with your image path
     image = cv2.imread(image_path)
 
     if image is None:

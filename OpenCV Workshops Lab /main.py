@@ -9,6 +9,7 @@ from lab2.lab2 import lab2
 from lab3.lab3 import lab3  
 from lab4.lab4 import lab4
 from lab5.lab5 import lab5
+from lab6.lab6 import lab6
 def main():
     while True:
         print("\nComputer Vision Labs")
@@ -17,8 +18,9 @@ def main():
         print("3. Lab 3")
         print("4. Lab 4")
         print("5. Lab 5")
+        print("6. Lab 6")
         
-        choice = input("Enter your choice (1-4): ")
+        choice = input("Enter your choice (1-6): ")
         
         if choice == '1':
             print("Exiting...")
@@ -35,6 +37,9 @@ def main():
         elif choice == '5':
             print("Running Lab 5...")
             lab5()  
+        elif choice == '6':
+            print("Running Lab 6...")
+            lab6() 
         else:
             print("Invalid choice. Please try again.")
 
