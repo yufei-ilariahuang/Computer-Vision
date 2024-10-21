@@ -49,16 +49,22 @@ This function computes the histogram of an image:
 ## Observations and Explanations
 
 1. **Grayscale Histogram**:
+![Grayscale histogram](https://github.com/user-attachments/assets/d1ac391a-5809-4100-98d7-a01faca03d61)
+
    - Provides a quick understanding of the overall brightness and contrast of an image.
    - A left-skewed histogram indicates a darker image, while a right-skewed histogram indicates a brighter image.
    - Peaks in the histogram represent dominant intensity levels in the image.
 
-2. **Color Histogram**:
+3. **Color Histogram**:
+![Color histogram](https://github.com/user-attachments/assets/6542cc41-982c-4054-9291-a53cc0daca12)
+
    - Offers insights into the color composition of an image.
    - Each channel (Blue, Green, Red) is represented separately, allowing for detailed color analysis.
    - Peaks in specific channels indicate dominant colors in the image.
 
 ## Additional Explorations
+![Gray image](https://github.com/user-attachments/assets/607203ee-9368-4b5c-b1cb-626051b967aa)
+![Color image](https://github.com/user-attachments/assets/408a7b4f-f8ab-46e0-97b8-0d6ae1f2c56c)
 
 1. **Histogram Equalization**: Implement histogram equalization to improve image contrast.
    ```python

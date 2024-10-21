@@ -49,6 +49,7 @@ The main `lab2()` function performs the following steps:
 5. Applies and compares different image processing methods (darker, grayscale, HSV conversion)
 
 ## Observations and Explanations
+![Figure_lab2_](https://github.com/user-attachments/assets/ea5b8072-95af-4354-bb04-02e6202be084)
 
 1. **Image Loading**: The `load_image()` function can load images in different modes (color, grayscale, unchanged).
 
@@ -61,6 +62,7 @@ The main `lab2()` function performs the following steps:
    - The `grayscale_opencv()` function shows color to grayscale conversion.
 
 ## Additional Explorations
+![comparison_results](https://github.com/user-attachments/assets/cce33e19-ce39-45b6-9ada-ce69e329c173)
 
 The `compare_methods()` function demonstrates:
 1. Making an image darker
