@@ -21,7 +21,7 @@ This project demonstrates real-time feature detection and matching across differ
 ## Setup Instructions
 1. Clone the repository:
    ```
-   git clone https://github.com/siyigao/mini-project4.git
+   git clone https://github.khoury.northeastern.edu/panxuedong418/CS5330_F24_Group5.git
    cd mini-project4
    ```
 
@@ -53,4 +53,4 @@ This project demonstrates real-time feature detection and matching across differ
 
 ## Conclusion
 - ORB is the fastest algorithm while SIFT performs the best in the most scenarios. For special case when the angle of rotation is proportional to 90 degrees, ORB outperforms SIFT, and in the noisy images, ORB and SIFT show almost similar performances. In ORB, the features are mostly concentrated in objects at the center of the image,while in SIFT key point detectors are distributed over the image.
-- FLANN-based matching is faster than Brute-Force Matching.
+
