@@ -42,10 +42,131 @@ def read_images_from_folder(folder_path):
     return images
 
 def stitch_images(images):
-    #
-    # Add your solution here
-    #
-    pass
+    """
+    Stitch four images arranged in a 2x2 grid using SIFT features and homography.
+    Args:
+        images: List of 4 images [top_left, top_right, bottom_left, bottom_right]
+    Returns:
+        Stitched image
+    """
+    if len(images) != 4:
+        print("Need exactly 4 images")
+        return None
+        
+    # Get keypoints and descriptors for all images
+    imgs_keypoints, imgs_descriptors = find_keypoints_and_descriptors(images)
+    
+    # First stitch horizontal pairs
+    # Match and stitch top row (images 0 and 1)
+    matches_top = match_keypoints(
+        images[0], imgs_keypoints[0], imgs_descriptors[0],
+        images[1], imgs_keypoints[1], imgs_descriptors[1],
+        0, 1
+    )
+    
+    if len(matches_top) < 4:
+        print("Not enough matches in top row")
+        return None
+        
+    # Get matching points for top row
+    src_pts_top = np.float32([imgs_keypoints[0][m.queryIdx].pt for m in matches_top]).reshape(-1, 1, 2)
+    dst_pts_top = np.float32([imgs_keypoints[1][m.trainIdx].pt for m in matches_top]).reshape(-1, 1, 2)
+    
+    # Calculate homography for top row
+    H_top, _ = cv2.findHomography(dst_pts_top, src_pts_top, cv2.RANSAC, 5.0)
+    
+    # Stitch top row
+    h1, w1 = images[0].shape[:2]
+    h2, w2 = images[1].shape[:2]
+    top_corners = np.float32([[0, 0], [0, h2], [w2, h2], [w2, 0]]).reshape(-1, 1, 2)
+    top_transformed = cv2.perspectiveTransform(top_corners, H_top)
+    [xmin_top, ymin_top] = np.int32(top_transformed.min(axis=0).ravel() - 0.5)
+    [xmax_top, ymax_top] = np.int32(top_transformed.max(axis=0).ravel() + 0.5)
+    
+    translation_top = np.array([[1, 0, -xmin_top], [0, 1, -ymin_top], [0, 0, 1]])
+    H_top = translation_top.dot(H_top)
+    
+    top_row = cv2.warpPerspective(images[1], H_top, (xmax_top-xmin_top, ymax_top-ymin_top))
+    top_row[-ymin_top:h1-ymin_top, -xmin_top:w1-xmin_top] = images[0]
+    
+    # Match and stitch bottom row (images 2 and 3)
+    matches_bottom = match_keypoints(
+        images[2], imgs_keypoints[2], imgs_descriptors[2],
+        images[3], imgs_keypoints[3], imgs_descriptors[3],
+        2, 3
+    )
+    
+    if len(matches_bottom) < 4:
+        print("Not enough matches in bottom row")
+        return None
+        
+    # Get matching points for bottom row
+    src_pts_bottom = np.float32([imgs_keypoints[2][m.queryIdx].pt for m in matches_bottom]).reshape(-1, 1, 2)
+    dst_pts_bottom = np.float32([imgs_keypoints[3][m.trainIdx].pt for m in matches_bottom]).reshape(-1, 1, 2)
+    
+    # Calculate homography for bottom row
+    H_bottom, _ = cv2.findHomography(dst_pts_bottom, src_pts_bottom, cv2.RANSAC, 5.0)
+    
+    # Stitch bottom row
+    h3, w3 = images[2].shape[:2]
+    h4, w4 = images[3].shape[:2]
+    bottom_corners = np.float32([[0, 0], [0, h4], [w4, h4], [w4, 0]]).reshape(-1, 1, 2)
+    bottom_transformed = cv2.perspectiveTransform(bottom_corners, H_bottom)
+    [xmin_bottom, ymin_bottom] = np.int32(bottom_transformed.min(axis=0).ravel() - 0.5)
+    [xmax_bottom, ymax_bottom] = np.int32(bottom_transformed.max(axis=0).ravel() + 0.5)
+    
+    translation_bottom = np.array([[1, 0, -xmin_bottom], [0, 1, -ymin_bottom], [0, 0, 1]])
+    H_bottom = translation_bottom.dot(H_bottom)
+    
+    bottom_row = cv2.warpPerspective(images[3], H_bottom, (xmax_bottom-xmin_bottom, ymax_bottom-ymin_bottom))
+    bottom_row[-ymin_bottom:h3-ymin_bottom, -xmin_bottom:w3-xmin_bottom] = images[2]
+    
+    # Now stitch top and bottom rows vertically
+    # Get keypoints and descriptors for the stitched rows
+    row_keypoints, row_descriptors = find_keypoints_and_descriptors([top_row, bottom_row])
+    
+    matches_vertical = match_keypoints(
+        top_row, row_keypoints[0], row_descriptors[0],
+        bottom_row, row_keypoints[1], row_descriptors[1],
+        4, 5
+    )
+    
+    if len(matches_vertical) < 4:
+        print("Not enough matches between rows")
+        return None
+        
+    # Get matching points for vertical stitching
+    src_pts_vert = np.float32([row_keypoints[0][m.queryIdx].pt for m in matches_vertical]).reshape(-1, 1, 2)
+    dst_pts_vert = np.float32([row_keypoints[1][m.trainIdx].pt for m in matches_vertical]).reshape(-1, 1, 2)
+    
+    # Calculate homography for vertical stitching
+    H_vert, _ = cv2.findHomography(dst_pts_vert, src_pts_vert, cv2.RANSAC, 5.0)
+    
+    # Stitch rows vertically
+    h_top, w_top = top_row.shape[:2]
+    h_bottom, w_bottom = bottom_row.shape[:2]
+    vert_corners = np.float32([[0, 0], [0, h_bottom], [w_bottom, h_bottom], [w_bottom, 0]]).reshape(-1, 1, 2)
+    vert_transformed = cv2.perspectiveTransform(vert_corners, H_vert)
+    [xmin_vert, ymin_vert] = np.int32(vert_transformed.min(axis=0).ravel() - 0.5)
+    [xmax_vert, ymax_vert] = np.int32(vert_transformed.max(axis=0).ravel() + 0.5)
+    
+    translation_vert = np.array([[1, 0, -xmin_vert], [0, 1, -ymin_vert], [0, 0, 1]])
+    H_vert = translation_vert.dot(H_vert)
+    
+    final_result = cv2.warpPerspective(bottom_row, H_vert, (xmax_vert-xmin_vert, ymax_vert-ymin_vert))
+    final_result[-ymin_vert:h_top-ymin_vert, -xmin_vert:w_top-xmin_vert] = top_row
+    
+    # Crop black borders
+    gray = cv2.cvtColor(final_result, cv2.COLOR_BGR2GRAY)
+    _, thresh = cv2.threshold(gray, 1, 255, cv2.THRESH_BINARY)
+    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    
+    if contours:
+        max_contour = max(contours, key=cv2.contourArea)
+        x, y, w, h = cv2.boundingRect(max_contour)
+        final_result = final_result[y:y+h, x:x+w]
+    
+    return final_result
 
 def combine_images_into_grid(images, rows=2, cols=2):
     if not images:
@@ -87,11 +208,8 @@ def main():
     # Once you start, ignore combine_images_into_grid()
     # Instead, complete stitch_image(), if needed you can add more arguments
     # at stitch_image()
-    stitched_image = combine_images_into_grid(images, rows=2, cols=2)
-    # stitched_image = stitch_image(images) 
+    #stitched_image = combine_images_into_grid(images, rows=2, cols=2)
+    stitched_image = stitch_images(images) 
 
     # Display the stitched image
     display_stitched_image(stitched_image)
-
-if __name__ == '__main__':
-    main()
