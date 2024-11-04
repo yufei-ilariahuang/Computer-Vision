@@ -1,0 +1,4 @@
+0,CellPhone
+1,Mug
+2,RemoteControl
+3,TV
