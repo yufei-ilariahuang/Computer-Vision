@@ -1,0 +1,49 @@
+path: obj365
+train: images/train
+val: images/val
+test: images/test
+
+names:
+    0: Person
+    1: Trash bin Can
+    2: Chair
+    3: Wheelchair
+    4: Desk
+    5: car
+    6: Storage box
+    7: Barrel
+    8: Street Lights
+    9: Stroller
+    10: Stool
+    11: Cabinet/shelf
+    12: Potted Plant
+    13: Trolley
+    14: Motorcycle
+    15: Ladder
+    16: Bicycle
+    17: Bench
+    18: Dog
+    19: Bathtub
+    20: Toilet
+    21: Luggage
+    22: Backpack
+    23: Bed
+    24: Dining Table
+    25: Nightstand
+    26: Couch
+    27: Refrigerator
+    28: Traffic cone
+    29: Piano
+    30: Side Table
+    31: Coffee Table
+    32: Parking meter
+    33: Cat
+    34: Fire Hydrant
+    35: Crosswalk Sign
+    36: Printer
+    37: Billiards
+    38: Swing
+    39: Dishwasher
+    40: Washing Machine/Drying Machine
+    41: Slide
+    42: Treadmill
