@@ -77,8 +77,9 @@ This project includes a main script that allows you to run each lab individually
 Ensure you have set up the environment as described in the Setup and Installation section.
 Navigate to the project root directory in your terminal.
 Run the main script using Python:
-bashCopypython main.py
-
+```python
+    python main.py
+```
 You will see a menu with options to run each lab:
 CopyComputer Vision Labs
 1. Exit

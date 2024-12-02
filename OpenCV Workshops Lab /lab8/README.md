@@ -86,9 +86,3 @@ This lab demonstrates the effectiveness of different edge detection techniques:
 - Sobel edge detection proves efficient for basic edge detection needs
 - Canny edge detection offers more refined results with better noise handling
 - Each method has its strengths and optimal use cases
-
-Understanding these methods is crucial for:
-- Computer vision preprocessing
-- Feature extraction
-- Object detection systems
-- Image analysis applications
