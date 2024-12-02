@@ -11,6 +11,24 @@ This repository documents my journey through a comprehensive Computer Vision cou
 4. [Lab 4: Feature Detection and Matching](#lab-4-feature-detection-and-matching)
 5. [Lab 5: Image Histograms](#lab-5-image-histograms)
 6. [Lab 6: Smoothing and Blurring Techniques](#lab-6-smoothing-and-blurring-techniques)
+7. [Lab 7: Image Thresholding](#lab-7-image-thresholding)
+8. [Lab 8: Edge Detection](#lab-8-edge-detection)
+9. [Lab 9: Contour Detection](#lab-9-contour-detection)
+10. [Lab 10: Optical Flow](#lab-10-optical-flow)
+11. [Lab 11: Generative AI](#lab-11-generative-ai)
+
+## Project Structure
+```
+OpenCV Workshops Lab/
+├── image/                  # Shared image resources
+├── lab2/ - lab11/         # Individual lab directories
+│   ├── README.md          # Lab-specific documentation
+│   ├── lab*.py            # Main lab script
+│   ├── *_operations.py    # Supporting operations
+│   └── *.jpg             # Output images
+├── main.py                # Central execution script
+└── opencv_env.yml         # Environment configuration
+```
 
 ## Lab 1: Introduction to OpenCV
 
@@ -71,15 +89,73 @@ The final lab explores various smoothing and blurring methods:
 
 These techniques are crucial for noise reduction and image preprocessing in computer vision tasks.
 
-## How to Run
-This project includes a main script that allows you to run each lab individually. To run the labs, follow these steps:
 
-Ensure you have set up the environment as described in the Setup and Installation section.
-Navigate to the project root directory in your terminal.
-Run the main script using Python:
-```python
-    python main.py
+
+## Lab 7: Image Thresholding
+
+This lab explores various thresholding techniques:
+- Simple Thresholding
+- Adaptive Thresholding
+- Otsu's Thresholding
+
+Key implementations demonstrate how different thresholding methods affect image segmentation and binary image creation.
+
+## Lab 8: Edge Detection
+
+This lab focuses on edge detection algorithms:
+- Sobel Edge Detection (X and Y directions)
+- Combined Sobel Edge Detection
+- Canny Edge Detection
+
+Students learn to identify and extract edges from images using different approaches and parameters.
+
+## Lab 9: Contour Detection
+
+This lab covers contour detection and analysis:
+- Binary image preprocessing
+- Contour detection methods
+- Property analysis (area, perimeter)
+- Contour visualization techniques
+
+Practical applications include object detection and shape analysis.
+
+## Lab 10: Optical Flow
+
+This lab explores motion detection using optical flow:
+- Camera setup and operation
+- Sparse optical flow (Lucas-Kanade)
+- Dense optical flow (Farneback)
+- Real-time motion tracking
+
+The lab implements both sparse and dense optical flow methods for motion analysis.
+
+## Lab 11: Generative AI
+
+This lab introduces generative AI concepts through:
+- Adversarial image generation
+- Forward diffusion process
+- Basic denoising operations
+- Interactive parameter control
+
+Students experiment with noise manipulation and image recovery techniques.
+
+
+## How to Run
+
+1. Set up the environment:
+```bash
+conda env create -f opencv_env.yml
+conda activate opencv_env
 ```
+
+2. Run the main script:
+
+```python
+python main.py
+```
+
+3. Select lab number from menu (1-11) or 'q' to exit.
+
 You will see a menu with options to run each lab:
 CopyComputer Vision Labs
 1. Exit
@@ -88,21 +164,20 @@ CopyComputer Vision Labs
 4. Lab 4
 5. Lab 5
 6. Lab 6
+...
 
-Enter your choice (1-6):
+
+Each lab contains:
+- Main implementation file
+- Supporting operation modules
+- Comprehensive README
+- Output images and comparisons
+
+
 
 Enter the number corresponding to the lab you want to run, or enter '1' to exit the program.
 The selected lab will run, and you can interact with it as per the lab's instructions.
 After each lab finishes, you'll return to the main menu where you can choose to run another lab or exit the program.
-
-Main Script Overview
-The main.py script organizes all the labs and provides an easy way to run them. Here's a brief overview of how it works:
-
-It imports each lab's main function (lab2(), lab3(), etc.) from their respective modules.
-The main() function presents a menu to the user and runs the selected lab based on user input.
-The script uses a while loop to keep presenting the menu until the user chooses to exit.
-
-This structure allows for easy addition of new labs in the future and provides a centralized way to access all the labs in the portfolio.
 
 
 
