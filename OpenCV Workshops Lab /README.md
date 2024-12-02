@@ -142,19 +142,13 @@ Students experiment with noise manipulation and image recovery techniques.
 
 ## How to Run
 
-1. Set up the environment:
-```bash
-conda env create -f opencv_env.yml
-conda activate opencv_env
-```
-
-2. Run the main script:
+1. Run the main script:
 
 ```python
 python main.py
 ```
 
-3. Select lab number from menu (1-11) or 'q' to exit.
+2. Select lab number from menu (1-11) or 'q' to exit.
 
 You will see a menu with options to run each lab:
 CopyComputer Vision Labs
